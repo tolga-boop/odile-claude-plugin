@@ -9,6 +9,10 @@ Odile Gate (https://gate.odilelabs.com) is a hosted gateway. Each app or agent g
 
 Free: 3 apps, 10,000 calls a month, 30-day log. Pro: $29 a month, 25 apps, 1,000,000 calls, 365-day log.
 
+## 0. See it work first (optional, one minute)
+
+`curl -s https://gate.odilelabs.com/quickstart.sh | sh` creates a free project in front of a public test API and prints an allowed read (200), a refused delete (403), a stopped loop (429) and the audit log. Every refusal names its reason in the `x-gate-refused` header; the table is at https://gate.odilelabs.com under "Why was my call refused?".
+
 ## 1. Create the project (no sign-up)
 
 ```bash
