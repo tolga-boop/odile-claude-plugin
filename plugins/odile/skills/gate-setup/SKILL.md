@@ -26,7 +26,8 @@ In the agent's code:
 - Send the run token as `x-odile-run` with the app key. `GET <gateway>/_gate/run` lists what it may still do.
 - Every write sends an `Idempotency-Key`; on a retry reuse the same key. `already_executed` means it ran; `outcome_unknown` means check the API before trying again with a new key. Never loop on a write.
 - `202 approval_required` returns an `action_id`: stop, tell the user it waits for approval in the Gate dashboard, then resend the identical request with `x-odile-action: <action_id>`. Do not change the body.
-- Keep the admin key with the backend and the approver, never in the agent's environment. Gate checks method, path and query, not body contents: keep ownership checks (or Supabase row-level security) in the API.
+- Add the person who approves with `gate_add_approver` (their own `gp_` key; they sign in to the dashboard and see only what waits for them). Once a project has an approver the admin key cannot approve, so keep the admin key with the backend, the approver key with that person, and neither in the agent's environment.
+- Show it working first with no card: `curl -s https://gate.odilelabs.com/actions-quickstart.sh | sh` (built-in demo ticket API). In code, `import { Gate } from 'https://gate.odilelabs.com/sdk/gate.mjs'`: `gate.request()` adds the run token and an Idempotency-Key, returns an `outcome` (done, approval_required, already_executed, outcome_unknown, refused), and `waitForApproval()` resumes an approved call unchanged. Gate checks method, path and query, not body contents: keep ownership checks (or Supabase row-level security) in the API.
 
 The curl steps below do the same thing by hand.
 
