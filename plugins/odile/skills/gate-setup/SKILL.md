@@ -64,6 +64,8 @@ curl -s -X PUT https://gate.odilelabs.com/api/projects/$PROJECT/enterprise \
 
 Then routes such as `GET /users/{user}/orders/:id` or `GET /orders?user_id=eq.{user}` (PostgREST style) pass only for that token's user; anyone else's id gets 403, a missing or forged token 401. RS256, ES256 and EdDSA tokens; optional `audience` and `claim` (default `sub`).
 
+Query pins are refused on `POST` rules: an insert takes its owner from the body, so a query value cannot scope it. For writes use `POST /users/{user}/orders` and make the API take the owner from the path.
+
 Limit to say out loud: a call that does not name the user (`GET /orders/42` alone) cannot be checked per user. Shape the routes so the user is in the path or the query, or keep that check in the API.
 
 ## Check it worked
