@@ -18,6 +18,16 @@ This plugin connects the hosted Gate MCP server (`https://gate.odilelabs.com/mcp
 3. Point the app at the returned gateway URL and send its key as `Authorization: Bearer <app key>`.
 4. `gate_audit` shows what each app did; `gate_explain_refusal` turns an `x-gate-refused` value into the fix.
 
+## When the agent changes customer data: Gate Actions
+
+If the app is an agent that writes (updates tickets, sends messages, books, refunds), do not give it a standing key. Have the backend grant one **run** per agent session (`gate_create_run`, or `POST /api/projects/<id>/runs`): the actions it may take, bound to scope values such as `{"customer":"A"}`, a `max` per action, `approval: true` on anything customer-facing, and `ttl_seconds`. Then `gate_set_app_runs` with `"writes"` so no write passes without a run.
+
+In the agent's code:
+- Send the run token as `x-odile-run` with the app key. `GET <gateway>/_gate/run` lists what it may still do.
+- Every write sends an `Idempotency-Key`; on a retry reuse the same key. `already_executed` means it ran; `outcome_unknown` means check the API before trying again with a new key. Never loop on a write.
+- `202 approval_required` returns an `action_id`: stop, tell the user it waits for approval in the Gate dashboard, then resend the identical request with `x-odile-action: <action_id>`. Do not change the body.
+- Keep the admin key with the backend and the approver, never in the agent's environment. Gate checks method, path and query, not body contents: keep ownership checks (or Supabase row-level security) in the API.
+
 The curl steps below do the same thing by hand.
 
 ## 0. See it work first (optional, one minute)
