@@ -9,6 +9,17 @@ Odile Gate (https://gate.odilelabs.com) is a hosted gateway. Each app or agent g
 
 Free: 3 apps, 10,000 calls a month, 30-day log. Pro: $29 a month, 25 apps, 1,000,000 calls, 365-day log.
 
+## Fastest: the Gate MCP tools (this plugin connects them)
+
+This plugin connects the hosted Gate MCP server (`https://gate.odilelabs.com/mcp`; without the plugin: `claude mcp add --transport http odile-gate https://gate.odilelabs.com/mcp`). Use its tools instead of curl:
+
+1. `gate_create_project` with the API base URL (and the secret header it expects, if any). Save `admin_key` where the user keeps secrets (a gitignored `.env` or their secret store), never in code.
+2. `gate_add_app` once per app, with only the calls that app makes, read from the client code you just wrote. Example calls like `GET /orders/42` become rules like `GET /orders/:id`; check the `rules` it returns.
+3. Point the app at the returned gateway URL and send its key as `Authorization: Bearer <app key>`.
+4. `gate_audit` shows what each app did; `gate_explain_refusal` turns an `x-gate-refused` value into the fix.
+
+The curl steps below do the same thing by hand.
+
 ## 0. See it work first (optional, one minute)
 
 `curl -s https://gate.odilelabs.com/quickstart.sh | sh` creates a free project in front of a public test API and prints an allowed read (200), a refused delete (403), a stopped loop (429) and the audit log. Every refusal names its reason in the `x-gate-refused` header; the table is at https://gate.odilelabs.com under "Why was my call refused?".

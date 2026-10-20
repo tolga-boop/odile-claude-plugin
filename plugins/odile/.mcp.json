@@ -1,5 +1,12 @@
 {
   "mcpServers": {
-    "odile": { "type": "http", "url": "https://odilelabs.com/mcp" }
+    "odile": {
+      "type": "http",
+      "url": "https://odilelabs.com/mcp"
+    },
+    "odile-gate": {
+      "type": "http",
+      "url": "https://gate.odilelabs.com/mcp"
+    }
   }
 }

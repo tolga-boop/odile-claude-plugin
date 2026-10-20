@@ -1,7 +1,7 @@
 {
   "name": "odile",
-  "version": "0.1.0",
-  "description": "Put Odile Gate in front of an API (a key and allow-list per app, rate limits, a loop breaker for runaway agents, per-user rules) and give an agent a real phone line through the Odile MCP server.",
+  "version": "0.2.0",
+  "description": "Put Odile Gate in front of an API (a key and allow-list per app, rate limits, a loop breaker for runaway agents, per-user rules) from inside the coding session with the Gate MCP tools, and give an agent a real phone line through the Odile MCP server.",
   "author": { "name": "Odile Labs", "email": "hello@odilelabs.com", "url": "https://odilelabs.com" },
   "homepage": "https://odilelabs.com/developers",
   "repository": "https://github.com/tolga-boop/odile-claude-plugin",
