@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "odile": { "type": "http", "url": "https://odilelabs.com/mcp" }
+  }
+}

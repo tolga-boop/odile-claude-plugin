@@ -1,0 +1,14 @@
+{
+  "name": "odile-labs",
+  "owner": { "name": "Odile Labs", "email": "hello@odilelabs.com" },
+  "metadata": { "description": "Odile Labs plugins for Claude Code: a phone line for your agent, and Odile Gate in front of your API." },
+  "plugins": [
+    {
+      "name": "odile",
+      "source": "./plugins/odile",
+      "description": "Odile Gate setup (per-app keys, allow-lists, loop breaker, per-user rules) and the Odile MCP server (phone lines and messages for AI agents).",
+      "category": "development",
+      "homepage": "https://odilelabs.com/developers"
+    }
+  ]
+}
