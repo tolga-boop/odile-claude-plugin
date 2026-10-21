@@ -1,10 +1,23 @@
 {
   "name": "odile",
-  "version": "0.4.0",
-  "description": "Put Odile Gate in front of an API (a key and allow-list per app, rate limits, a loop breaker for runaway agents, per-user rules, Gate Actions run permissions with approvals) from inside the coding session with the Gate MCP tools, and give an agent a real phone line through the Odile MCP server.",
-  "author": { "name": "Odile Labs", "email": "hello@odilelabs.com", "url": "https://odilelabs.com" },
+  "version": "0.4.1",
+  "description": "Keep your agent inside the calls your API allows with Odile Gate (a key and allow-list per app, rate limits, a loop breaker for runaway agents, per-user rules, Gate Actions run permissions with approvals), set up from inside the coding session; let an agent message or book a business that has no API (Odile Direct); and give an app a real phone line, 25 cents a minute, through the Odile MCP server.",
+  "author": {
+    "name": "Odile Labs",
+    "email": "hello@odilelabs.com",
+    "url": "https://odilelabs.com"
+  },
   "homepage": "https://odilelabs.com/developers",
   "repository": "https://github.com/tolga-boop/odile-claude-plugin",
   "license": "MIT",
-  "keywords": ["api-gateway", "ai-agents", "rate-limit", "mcp", "phone", "security"]
+  "keywords": [
+    "a2a",
+    "ai-agents",
+    "api-gateway",
+    "direct",
+    "mcp",
+    "phone",
+    "rate-limit",
+    "security"
+  ]
 }

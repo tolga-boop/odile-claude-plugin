@@ -1,5 +1,11 @@
 # Odile Labs plugin for Claude Code
 
+What it solves:
+
+- **An agent with your API key can do anything that key allows.** It can repeat a call in a loop, read another customer's data, or change something nobody approved. Odile Gate gives each app its own key and a list of the calls it may make, stops a repeating agent, holds a risky write for a person to approve, and logs every call.
+- **Your agent can't reach a business that has no API.** Odile Direct finds the business by its phone number and leaves it a message or books a time. Lookups are free; 50 tasks a month are free with a developer key.
+- **Your app needs a phone line that answers.** The Odile MCP server gives it an AI receptionist line: free test line, then 25 cents a minute.
+
 Two skills and one MCP server:
 
 - **gate-setup**: put [Odile Gate](https://gate.odilelabs.com) in front of your API with curl. Each app or agent gets its own key, an allow-list of calls and a rate limit; a loop breaker stops an agent that keeps sending the same call; per-user rules keep signed-in users to their own rows. Free tier: 3 apps, 10,000 calls a month.

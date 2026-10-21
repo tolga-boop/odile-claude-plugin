@@ -1,12 +1,17 @@
 {
   "name": "odile-labs",
-  "owner": { "name": "Odile Labs", "email": "hello@odilelabs.com" },
-  "metadata": { "description": "Odile Labs plugins for Claude Code: a phone line for your agent, and Odile Gate in front of your API." },
+  "owner": {
+    "name": "Odile Labs",
+    "email": "hello@odilelabs.com"
+  },
+  "metadata": {
+    "description": "Odile Labs plugins for Claude Code: keep your agent inside your API (Odile Gate), reach businesses that have no API (Odile Direct), and a phone line that answers."
+  },
   "plugins": [
     {
       "name": "odile",
       "source": "./plugins/odile",
-      "description": "Odile Gate setup (per-app keys, allow-lists, loop breaker, per-user rules) and the Odile MCP server (phone lines and messages for AI agents).",
+      "description": "Odile Gate keeps an agent inside the calls your API allows (per-app keys, allowed calls, loop breaker, approvals, audit log); the Odile MCP server lets an agent message or book a business that has no API (Odile Direct) and gives an app a phone line (25 cents a minute).",
       "category": "development",
       "homepage": "https://odilelabs.com/developers"
     }
