@@ -33,3 +33,5 @@ Then ask Claude, for example: "put Odile Gate in front of my Supabase API so eac
 Made by [Odile Labs](https://odilelabs.com) (OdileUSA L.L.C.). Questions: hello@odilelabs.com. License: MIT.
 
 The public read-only `get_agent_services` MCP tool explains when Gate enforcement or Direct business communication fits, how to connect and their limits. It reads no account and contacts no business. Gate’s `gate_check_setup` reports configuration gaps without upstream requests or policy changes; test backend ownership rules separately. Direct reaches participating businesses through the skills on their public cards. [Agent connection guide](https://odilelabs.com/a2a#connecting).
+
+Gate admins can read `gate_metrics` for stored-call counts, measured duration including upstream wait and separate monthly usage, with partial audit coverage disclosed. Signed in with `direct:tasks` consent, `get_direct_usage` reads the caller’s allowance, prepaid Direct credits and last 20 charged tasks. It never buys credits or upgrades billing, and is outside the directory connector. The same usage appears at [Developers](https://odilelabs.com/developers#direct).
