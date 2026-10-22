@@ -26,8 +26,10 @@ Then ask Claude, for example: "put Odile Gate in front of my Supabase API so eac
 
 ## Notes
 
-- Gate never stores request or response bodies; the upstream secret is encrypted (AES-GCM).
+- Gate does not put request or response bodies in its audit log. Approval-pending calls are stored encrypted; the upstream secret is encrypted (AES-GCM).
 - A call that does not name the user cannot be checked per user; shape routes so the user id is in the path or query.
 - Buying anything (Gate Pro, phone minutes) happens on Stripe's own checkout page, opened by you.
 
 Made by [Odile Labs](https://odilelabs.com) (OdileUSA L.L.C.). Questions: hello@odilelabs.com. License: MIT.
+
+The public read-only `get_agent_services` MCP tool explains when Gate enforcement or Direct business communication fits, how to connect and their limits. It reads no account and contacts no business. Gate’s `gate_check_setup` reports configuration gaps without upstream requests or policy changes; test backend ownership rules separately. Direct reaches participating businesses through the skills on their public cards. [Agent connection guide](https://odilelabs.com/a2a#connecting).
