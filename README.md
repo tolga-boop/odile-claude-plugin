@@ -11,9 +11,9 @@ Two skills and one MCP server:
 - **gate-setup**: put [Odile Gate](https://gate.odilelabs.com) in front of your API with curl. Each app or agent gets its own key, an allow-list of calls and a rate limit; a loop breaker stops an agent that keeps sending the same call; per-user rules keep signed-in users to their own rows. Free tier: 3 apps, 10,000 calls a month.
 - **agent-phone-line**: give a business an AI receptionist, or let your agent message or book a business by its phone number, through the Odile MCP server (`https://odilelabs.com/mcp`).
 
-[![Odile Gate in 58 seconds](https://img.youtube.com/vi/nv3lfb8Yleo/maxresdefault.jpg)](https://youtu.be/nv3lfb8Yleo)
+[![Odile Gate in 60 seconds](https://img.youtube.com/vi/9wJtsjkIwoM/hqdefault.jpg)](https://youtu.be/9wJtsjkIwoM)
 
-Odile Gate in 58 seconds: [watch on YouTube](https://youtu.be/nv3lfb8Yleo).
+Odile Gate in 60 seconds: [watch on YouTube](https://youtu.be/9wJtsjkIwoM).
 
 ## Install
 
