@@ -1,6 +1,6 @@
 {
   "name": "odile",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "Keep your agent inside the calls your API allows with Odile Gate (a key and allow-list per app, rate limits, a loop breaker for runaway agents, per-user rules, Gate Actions run permissions with approvals), set up from inside the coding session; let an agent message or book a business that has no API (Odile Direct); and give an app a real phone line, 25 cents a minute, through the Odile MCP server.",
   "author": {
     "name": "Odile Labs",

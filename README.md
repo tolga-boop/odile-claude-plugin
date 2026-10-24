@@ -6,9 +6,10 @@ What it solves:
 - **Your agent can't reach a business that has no API.** Odile Direct finds the business by its phone number and leaves it a message or books a time. 25 free sends per agent identity per UTC month, then $0.25 per delivered message or $1.00 per confirmed booking; $10 or $50 prepaid credit. Lookups and availability stay free; nothing renews.
 - **Your app needs a phone line that answers.** The Odile MCP server gives it an AI receptionist line: free test line, then 25 cents a minute.
 
-Two skills and one MCP server:
+Three skills and two MCP servers:
 
 - **gate-setup**: put [Odile Gate](https://gate.odilelabs.com) in front of your API with curl. Each app or agent gets its own key, an allow-list of calls and a rate limit; a loop breaker stops an agent that keeps sending the same call; per-user rules keep signed-in users to their own rows. Free tier: 3 apps, 10,000 calls a month.
+- **odile-m2m**: reach a participating business by phone number; read its card, send a message, check availability or book the first open time with permission. MCP or dependency-free HTTPS helper; read task state and callback_check. Includes fictional demo guidance and phone fallback limits.
 - **agent-phone-line**: give a business an AI receptionist, or let your agent message or book a business by its phone number, through the Odile MCP server (`https://odilelabs.com/mcp`).
 
 [![Odile Gate in 60 seconds](https://img.youtube.com/vi/9wJtsjkIwoM/hqdefault.jpg)](https://youtu.be/9wJtsjkIwoM)
@@ -41,3 +42,5 @@ Gate admins can read `gate_metrics` for stored-call counts, measured duration in
 Response redaction on Free and Pro: choose an app’s JSON fields with gate_set_response, REST PUT /api/projects/<id>/apps/<app>/response, SDK admin.setResponse(app, allow), or its dashboard. JSON Pointer paths such as /id and /items/*/name keep only selected fields; selecting a container includes its subtree. Filtering is opt-in, capped at 1 MiB and a 5-second body read. Non-JSON, malformed or oversized replies are withheld; a withheld reply does not reverse a write. Response bodies are inspected only when filtering is enabled and are never stored.
 
 Merchant payments (configured deposit pilot): the human approves Stripe Connect Checkout for the business’s configured service deposit. get_direct_payment, with direct:tasks consent, reconciles the caller’s existing task and returns Stripe-verified payment evidence, a receipt when available and separate booking state. It creates no new charge identity; a paid hold may finish its authorized booking. Bank payout status is unknown. Availability requires an enabled pilot, a connected merchant and provider configuration; no payment without human checkout.
+
+The new `odile-m2m` skill is also packaged for Claude.ai Skills upload. Uploading a skill does not connect MCP; add `https://odilelabs.com/mcp` separately. [Live Direct capabilities and prices](https://odilelabs.com/a2a) are authoritative.
