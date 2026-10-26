@@ -44,3 +44,25 @@ Response redaction on Free and Pro: choose an app’s JSON fields with gate_set_
 Merchant payments (configured deposit pilot): the human approves Stripe Connect Checkout for the business’s configured service deposit. get_direct_payment, with direct:tasks consent, reconciles the caller’s existing task and returns Stripe-verified payment evidence, a receipt when available and separate booking state. It creates no new charge identity; a paid hold may finish its authorized booking. Bank payout status is unknown. Availability requires an enabled pilot, a connected merchant and provider configuration; no payment without human checkout.
 
 Runnable Direct examples (curl, Python, TypeScript, MCP SDK, LangChain, CrewAI, Vercel AI SDK, OpenAI Agents SDK): [tolga-boop/odile-m2m-examples](https://github.com/tolga-boop/odile-m2m-examples). The new `odile-m2m` skill is also packaged for Claude.ai Skills upload. Uploading a skill does not connect MCP; add `https://odilelabs.com/mcp` separately. [Live Direct capabilities and prices](https://odilelabs.com/a2a) are authoritative.
+
+## gitagent
+
+The same plugin installs into a [gitagent](https://github.com/open-gitagent/gitagent) agent (the manifest is `plugin.yaml`; `skills/` points at the same three skills):
+
+```sh
+gitagent plugin install https://github.com/tolga-boop/odile-claude-plugin.git
+```
+
+Then add the two hosted MCP servers to `agent.yaml` so the skills have their tools:
+
+```yaml
+mcp_servers:
+  odile:
+    type: http
+    url: "https://odilelabs.com/mcp"
+  gate:
+    type: http
+    url: "https://gate.odilelabs.com/mcp"
+```
+
+Both servers answer their public tools (prices, the receptionist benchmark, Gate's setup check) before any sign-in; the rest asks you to sign in once in a browser.

@@ -1,0 +1,11 @@
+id: odile
+name: Odile
+version: 0.5.0
+description: Keep your agent inside the calls your API allows (Odile Gate), reach a business that has no API by its phone number (Odile Direct), and give your app a phone line that answers. Skills plus the two hosted MCP servers to add to agent.yaml.
+author: Odile Labs <hello@odilelabs.com>
+license: MIT
+engine: ">=1.0.0"
+
+provides:
+  skills: true
+  prompt: prompt.md
