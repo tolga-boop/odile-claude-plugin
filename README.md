@@ -2,7 +2,7 @@
 
 What it solves:
 
-- **An agent with your API key can do anything that key allows.** It can repeat a call in a loop, read another customer's data, or change something nobody approved. Odile Gate gives each app its own key and a list of the calls it may make, stops a repeating agent, holds a risky write for a person to approve, and logs every call.
+- **An agent with your API key can do anything that key allows.** It can repeat a call in a loop, read another customer's data, or change something nobody approved. Odile Gate gives each app its own key and a list of the calls it may make, stops a repeating agent, holds a risky write for a person to approve, and logs every call. It works the same in front of your AI model API key: each agent gets its own Gate key, the provider key stays in Gate and can be replaced in one call, and prompts and answers are never stored ([guide](https://gate.odilelabs.com/guides/ai-model-api-key-gateway)).
 - **Your agent can't reach a business that has no API.** Odile Direct finds the business by its phone number and leaves it a message or books a time. 50 free tasks per agent identity per UTC month, then 1 credit per delivered message or 5 credits per confirmed booking (1 credit = $0.10; packs: 100 credits for $10, 1,000 credits for $90, 10,000 credits for $800). Lookups and availability stay free; credits never expire and nothing renews.
 - **Your app needs a phone line that answers.** The Odile MCP server gives it an AI receptionist line: free test line, then 25 cents a minute.
 
