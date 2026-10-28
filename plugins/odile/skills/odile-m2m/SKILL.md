@@ -50,6 +50,12 @@ Raw A2A uses `POST https://api.odilelabs.com/a2a/v1/b/{biz}` or `/a2a/v1/c/{biz}
 {"jsonrpc":"2.0","id":1,"method":"SendMessage","params":{"message":{"messageId":"ONE_STABLE_ID","role":"ROLE_USER","parts":[{"mediaType":"application/json","data":{"skill":"check_availability"}}]}}}
 ```
 
+## Pay per task with x402 (agents with a wallet)
+
+No account or API key is needed. After the free allowance, a structured send answers HTTP 402 with x402 payment requirements in `PAYMENT-REQUIRED` and `X-Payment-Required`: $0.10 per delivered message or $0.50 per confirmed booking, in USDC on Base (`eip155:8453`) or Solana. Resend the same request, with the same `messageId`, carrying the signed payment in `PAYMENT-SIGNATURE` (x402 v2) or `X-Payment` (v1). It settles only after delivery; failed, refused and unconfirmed tasks are never charged.
+
+Conway Automaton: call `x402_fetch` with `url` = the A2A endpoint above, `method` = `POST` and `body` = the envelope. Its default treasury policy pays only `conway.tech`, so its operator must add `api.odilelabs.com` to `treasuryPolicy.x402AllowedDomains`; without that, use the free allowance with a plain HTTP request.
+
 ## Read the outcome
 
 Read `result.task.status.state` and artifact JSON data, not just HTTP 200. `TASK_STATE_INPUT_REQUIRED`, `FAILED` and `REJECTED` are not success. For bookings require `booked: true`, `booking_id` and `when`; a request, open slot or payment link is not a confirmation. With `WORKING`, follow only the returned Odile signed status URL and keep it private. Surface missing fields or refusal reasons; respect `429`/limits and stop rather than cycling identities.
