@@ -18,6 +18,8 @@ Odile Gate in 60 seconds: [watch on YouTube](https://youtu.be/9wJtsjkIwoM).
 
 ## Install
 
+To see Gate work before installing anything: `npx -y github:tolga-boop/odile-cli#v0.1.1 sandbox` (the [Odile CLI](https://github.com/tolga-boop/odile-cli): a free Gate project, one allowed call, one refused call, no sign-up).
+
 ```
 /plugin marketplace add tolga-boop/odile-claude-plugin
 /plugin install odile@odile-labs
